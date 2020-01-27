@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TaskPaneApp">
+  <Id>47f89235-721a-4340-bee8-5d3da41f4731</Id>
+  <Version>2.0.0.0</Version>
+  <ProviderName>Microsoft</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="TwoWayMessageDialogTest">
+  </DisplayName>
+  <AppDomains>
+    <AppDomain>https://account-d.docusign.com/</AppDomain>
+    <AppDomain>https://www.bing.com</AppDomain>
+    <AppDomain>http://www.bing.com</AppDomain>
+    <AppDomain>https://dmpimemsftdev.azurewebsites.net/</AppDomain>
+    <AppDomain>https://cloud.taiyiyun.com/</AppDomain>
+    <AppDomain>https://localhost:7012/</AppDomain>
+    <AppDomain>https://localhost:7010/</AppDomain>
+    <AppDomain>https://localhost/</AppDomain>
+	<AppDomain>https://osf-agave/</AppDomain>
+	<AppDomain>https://localhost:3000/</AppDomain>
+	<AppDomain>https://unpkg.com/</AppDomain>
+  </AppDomains>
+  <Description DefaultValue="TwoWayMessageDialogTest Description">
+  </Description>
+  <IconUrl DefaultValue="https://ssl-api.bing.com/office/maps/images/BingMaps.png"/>
+  <Capabilities>
+    <Capability Name="Workbook" />
+    <Capability Name="Document" />
+    <Capability Name="Project" />
+    <Capability Name="Presentation" />
+    <Capability Name="Mailbox" />
+  </Capabilities>
+  <DefaultSettings>
+<!--   <SourceLocation DefaultValue="https://yijitesting.azurewebsites.net/JsO16/MOE/JsomDialog.html"> -->
+ 	<SourceLocation DefaultValue="file://MAAGR-MAIL/DialogTestApp/dialogtaskpane.html">        
+<!--        <SourceLocation DefaultValue="https://staasf-staging4.shoretelsky.com/outlook-addins/calendar/meeting.html?clDev=auth.dev.mitel.io">-->
+    </SourceLocation>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSOM DCR Test</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	   <!-- script type="text/javascript" src="https://osf-agave/rtm/yiji/JsO16/office.debug.js"></script --> 
+	   <script type="text/javascript" src="https://unpkg.com/@microsoft/office-js@1.1.37-custom.16/dist/office.debug.js"></script> 
+	   <!-- script type="text/javascript" src="https://unpkg.com/@microsoft/office-js@1.1.37-custom.15/dist/office.debug.js"></script --> 
+	<!--   <script type="text/javascript" src="https://yijitesting.azurewebsites.net/JsO16/office.debug.js"></script>  -->
+	<!--	<script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.debug.js"></script> -->
+
+		<script src="Dialog.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		var _OM;
+
+		window.Office.initialize = function (reason) {
+			_OM = Office.context.document;
+			text.value = "test test";
+			RegisterMessageChild();
+		}
+		function SendMessagetoParent() {
+			var value = document.getElementById("TxtData").value;
+			if (!value) {
+				value = "Hello";
+			}
+			Office.context.ui.messageParent(value);
+		}
+		
+		function RegisterMessageChild() {
+			Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived, onMessageFromParent, onRegisterMessageComplete);
+		}
+
+	   function onMessageFromParent(event) {
+			messsageFromDialog.value += event.message;
+			Office.context.ui.messageParent(event.message);
+		}
+
+	   function onRegisterMessageComplete(asyncResult) {
+			text.value += asyncResult.status;
+			if(asyncResult.status != Office.AsyncResultStatus.Succeeded) {
+				text.value += asyncResult.error.message;
+			}
+		}
+		</script>
+	</head>
+	<body>
+	<div>
+		Message
+		<div>
+			<button id="BtnSetData" onclick="SendMessagetoParent()">SendMessageToParent</button>: <input id="TxtData" type="text" />
+		</div>
+	</div>
+	<textarea id="text" cols="20" rows="5"></textarea>
+    <textarea id="messsageFromDialog" cols="20" rows="5"></textarea>
+	</body>
+</html>

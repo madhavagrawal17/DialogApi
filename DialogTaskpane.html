@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DialogApp</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <!-- script type="text/javascript" src="https://osf-agave/rtm/yiji/JsO16/Office.debug.js"></script -->
+  <script type="text/javascript" src="https://unpkg.com/@microsoft/office-js@1.1.37-custom.16/dist/office.debug.js"></script> 
+  <!--script type="text/javascript" src="https://unpkg.com/@microsoft/office-js@1.1.37-custom.15/dist/office.debug.js"></script --> 
+<!-- 	<script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.debug.js"></script>-->
+<!-- 	<script type="text/javascript" src="https://yijitesting.azurewebsites.net/JsO16/office.js"></script>-->
+<!--<script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/custom-functions-preview-refresh/hosted/office.debug.js"></script>-->
+</head>
+
+   	<script type="text/javascript">
+		var _dialog;
+			function launchDialogCallback(asyncResult){
+				if(asyncResult.status=="succeeded"){
+					_dialog = asyncResult.value;
+					_dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, addStatus);
+					_dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogEventReceived, addCloseStatus);
+				}else{
+					text.value = asyncResult.error.message;
+				}
+			}
+			function LaunchDialog(event) {
+				Office.context.ui.displayDialogAsync("file://MAAGR-MAIL/DialogTestApp/dialog.html",
+					{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false}, 
+					launchDialogCallback);
+					/*if(event != undefined){ 
+					   setTimeout(function(){
+							   event.completed(); 
+					   }, 3000);
+					}*/
+			}
+
+			function BtnSetData() {
+				var value = document.getElementById("TxtData").value;
+				if (!value) {
+					value = "Hello";
+				}
+
+				_dialog.messageChild(value);
+			}
+			
+			function addStatus(arg){
+				text.value = text.value + arg.message;
+				var w = window;
+				console.log(w.location.href);
+			   }
+
+			   function onMessage(message, dialog){
+				text.value = text.value + message;
+			   }
+
+			   function addCloseStatus(arg){
+				text.value = text.value + " " + arg.error;
+				text.value = text.value + "dialog closed";
+			   }
+		</script>
+	<body>
+		<div>
+			Message
+			<div>
+				<button id="BtnSetData" onclick="BtnSetData()">SendMessageToChild</button>: <input id="TxtData" type="text" />
+			</div>
+		</div>
+		<div>
+			<br><br>
+            <textarea id="text" cols="20" rows="10"></textarea>
+			<input type="button" onclick="LaunchDialog()" value="LaunchDialog" id="LaunchDialog"/>
+		</div>
+		<div>
+			<div>
+				<button id="BtnRun" onclick="BtnRun()">Run</button> the following code:
+			</div>
+			<div>
+				<textarea id="TxtCode" cols="40" rows="20" spellcheck="false"></textarea>
+			</div>
+		</div>
+		<div>Logs:</div>
+		<div id="DivLog">
+		</div>
+	</body>
+</html>
+
