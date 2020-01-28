@@ -30,9 +30,7 @@
     <Capability Name="Mailbox" />
   </Capabilities>
   <DefaultSettings>
-<!--   <SourceLocation DefaultValue="https://yijitesting.azurewebsites.net/JsO16/MOE/JsomDialog.html"> -->
  	<SourceLocation DefaultValue="https://madhavagrawal17.github.io/DialogApi/DialogTaskpane.html">        
-<!--        <SourceLocation DefaultValue="https://staasf-staging4.shoretelsky.com/outlook-addins/calendar/meeting.html?clDev=auth.dev.mitel.io">-->
     </SourceLocation>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
