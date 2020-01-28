@@ -2,52 +2,48 @@
 <html>
 	<head>
 		<title>JSOM DCR Test</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=9" />
-	   <!-- script type="text/javascript" src="https://osf-agave/rtm/yiji/JsO16/office.debug.js"></script --> 
-	   <script type="text/javascript" src="https://unpkg.com/@microsoft/office-js@1.1.37-custom.16/dist/office.debug.js"></script> 
-	   <!-- script type="text/javascript" src="https://unpkg.com/@microsoft/office-js@1.1.37-custom.15/dist/office.debug.js"></script --> 
-	<!--   <script type="text/javascript" src="https://yijitesting.azurewebsites.net/JsO16/office.debug.js"></script>  -->
-	<!--	<script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.debug.js"></script> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=9" /> 
+	        <script type="text/javascript" src="https://unpkg.com/@microsoft/office-js@1.1.37-custom.16/dist/office.debug.js"></script> 
 		<script type="text/javascript" src="https://htmlpreview.github.io/?https://github.com/madhavagrawal17/DialogApi/blob/master/Dialog.js"></script>
 		<script type="text/javascript">
-		var _OM;
+			var _OM;
 
-		window.Office.initialize = function (reason) {
-			_OM = Office.context.document;
-			text.value = "test test";
-			RegisterMessageChild();
-		}
-		function SendMessagetoParent() {
-			var value = document.getElementById("TxtData").value;
-			if (!value) {
-				value = "Hello";
+			window.Office.initialize = function (reason) {
+				_OM = Office.context.document;
+				text.value = "test test";
+				RegisterMessageChild();
 			}
-			Office.context.ui.messageParent(value);
-		}
-		
-		function RegisterMessageChild() {
-			Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived, onMessageFromParent, onRegisterMessageComplete);
-		}
-
-	   function onMessageFromParent(event) {
-			messsageFromDialog.value += event.message;
-			Office.context.ui.messageParent(event.message);
-		}
-
-	   function onRegisterMessageComplete(asyncResult) {
-			text.value += asyncResult.status;
-			if(asyncResult.status != Office.AsyncResultStatus.Succeeded) {
-				text.value += asyncResult.error.message;
+			function SendMessagetoParent() {
+				var value = document.getElementById("TxtData").value;
+				if (!value) {
+					value = "Hello";
+				}
+				Office.context.ui.messageParent(value);
 			}
-		}
-	</script>
-	<script>
+
+			function RegisterMessageChild() {
+				Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived, onMessageFromParent, onRegisterMessageComplete);
+			}
+
+			function onMessageFromParent(event) {
+				messsageFromDialog.value += event.message;
+				Office.context.ui.messageParent(event.message);
+			}
+
+	   		function onRegisterMessageComplete(asyncResult) {
+				text.value += asyncResult.status;
+				if(asyncResult.status != Office.AsyncResultStatus.Succeeded) {
+					text.value += asyncResult.error.message;
+				}
+			}
+		</script>
+		<script>
 		// Perform Step 2 of an initialization that -- in a real developer scenario (non-test-agave), would have
 		//    been included inside the "excel-web-16.00.js"/"excel-win32-16.01.js"/etc files
-		Office.onReady(function(info) {
-			// do something
-		});
-	</script>
+			Office.onReady(function(info) {
+				// do something
+			});
+		</script>
 	</head>
 	<body>
 	<div>
