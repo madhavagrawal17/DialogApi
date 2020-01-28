@@ -56,7 +56,14 @@
 				text.value = text.value + " " + arg.error;
 				text.value = text.value + "dialog closed";
 			   }
-		</script>
+	</script>
+	<script>
+		// Perform Step 2 of an initialization that -- in a real developer scenario (non-test-agave), would have
+		//    been included inside the "excel-web-16.00.js"/"excel-win32-16.01.js"/etc files
+		Office.onReady(function(info) {
+			// do something
+		});
+	</script>
 	<body>
 		<div>
 			Message
