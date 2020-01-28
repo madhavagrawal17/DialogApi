@@ -41,16 +41,16 @@
 				text.value = text.value + arg.message;
 				var w = window;
 				console.log(w.location.href);
-			   }
+			 }
 
-			   function onMessage(message, dialog){
+			function onMessage(message, dialog){
 				text.value = text.value + message;
-			   }
+			 }
 
-			   function addCloseStatus(arg){
+			 function addCloseStatus(arg){
 				text.value = text.value + " " + arg.error;
 				text.value = text.value + "dialog closed";
-			   }
+			 }
 	</script>
 	<script>
 		// Perform Step 2 of an initialization that -- in a real developer scenario (non-test-agave), would have
@@ -68,7 +68,7 @@
 		</div>
 		<div>
 			<br><br>
-            <textarea id="text" cols="20" rows="10"></textarea>
+			<textarea id="text" cols="20" rows="10"></textarea>
 			<input type="button" onclick="LaunchDialog()" value="LaunchDialog" id="LaunchDialog"/>
 		</div>
 		<div>
