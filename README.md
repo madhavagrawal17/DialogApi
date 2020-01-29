@@ -3,7 +3,7 @@
 Parent Side code:
 
 Office.context.ui.displayDialogAsync("https://madhavagrawal17.github.io/DialogApi/Dialog.html",
-      {height:80, width:50, requireHTTPS: true, promptBeforeOpen:false}, launchDialogCallback);
+                  {height:80, width:50, requireHTTPS: true, promptBeforeOpen:false}, launchDialogCallback);
 
 function launchDialogCallback(asyncResult){
   if(asyncResult.status=="succeeded"){
