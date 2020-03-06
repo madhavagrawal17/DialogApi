@@ -21,7 +21,7 @@
 			}
 
 			function RegisterMessageChild() {
-				Office.context.ui.addEventHandler(Office.EventType.DialogParentMessageReceived, onMessageFromParent, onRegisterMessageComplete);
+				Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived, onMessageFromParent, onRegisterMessageComplete);
 			}
 
 			function onMessageFromParent(event) {
