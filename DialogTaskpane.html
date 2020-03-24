@@ -22,6 +22,12 @@
 					{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false}, 
 					launchDialogCallback);
 			}
+			
+			function LaunchInframeDialog(event) {
+				Office.context.ui.displayDialogAsync("https://madhavagrawal17.github.io/DialogApi/Dialog.html",
+					{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false, displayInIframe:true}, 
+					launchDialogCallback);
+			}
 
 			function BtnSetData() {
 				var value = document.getElementById("TxtData").value;
@@ -65,6 +71,7 @@
 			<br><br>
 			<textarea id="text" cols="20" rows="10"></textarea>
 			<input type="button" onclick="LaunchDialog()" value="LaunchDialog" id="LaunchDialog"/>
+			<input type="button" onclick="LaunchInframeDialog()" value="LaunchInframeDialog" id="LaunchInframeDialog"/>
 		</div>
 		<div>
 			<div>
