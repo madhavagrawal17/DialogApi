@@ -52,6 +52,11 @@
 				text.value = text.value + " " + arg.error;
 				text.value = text.value + "dialog closed";
 			 }
+		
+			function BtnRun(){
+				var code = document.getElementById("TxtCode").value;
+				eval(code);
+			}
 	</script>
 	<script>
 		// Perform Step 2 of an initialization that -- in a real developer scenario (non-test-agave), would have
