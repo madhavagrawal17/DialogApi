@@ -9,15 +9,12 @@
   <AppDomains>
     <AppDomain>https://account-d.docusign.com/</AppDomain>
     <AppDomain>https://www.bing.com</AppDomain>
-    <AppDomain>http://www.bing.com</AppDomain>
-    <AppDomain>https://dmpimemsftdev.azurewebsites.net/</AppDomain>
-    <AppDomain>https://cloud.taiyiyun.com/</AppDomain>
     <AppDomain>https://localhost:7012/</AppDomain>
     <AppDomain>https://localhost:7010/</AppDomain>
     <AppDomain>https://localhost/</AppDomain>
-	<AppDomain>https://osf-agave/</AppDomain>
-	<AppDomain>https://localhost:3000/</AppDomain>
-	<AppDomain>https://unpkg.com/</AppDomain>
+    <AppDomain>https://osf-agave/</AppDomain>
+    <AppDomain>https://localhost:3000/</AppDomain>
+    <AppDomain>https://unpkg.com/</AppDomain>
   </AppDomains>
   <Description DefaultValue="TwoWayMessageDialogTest Description">
   </Description>
