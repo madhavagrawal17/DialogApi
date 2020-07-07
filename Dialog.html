@@ -21,7 +21,12 @@
 			}
 
 			function RegisterMessageChild() {
-				Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived, onMessageFromParent, onRegisterMessageComplete);
+				console.log("RegisterMessageChild called");
+				try {
+					Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived, onMessageFromParent, onRegisterMessageComplete);
+				} catch(error) {
+					console.log(JSON.stringify(error));
+				}
 			}
 
 			function onMessageFromParent(event) {
@@ -32,6 +37,7 @@
 				text.value += asyncResult.status;
 				if(asyncResult.status != Office.AsyncResultStatus.Succeeded) {
 					text.value += asyncResult.error.message;
+					console.log(JSON.stringify(asyncResult));
 				}
 			}
 		</script>
