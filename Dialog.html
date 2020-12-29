@@ -45,12 +45,14 @@
 			  var promise = document.requestStorageAccess();
 			  promise.then(
 			    function () {
+				text.value += 'Access granted';
 				console.log("Access granted");
 			      // Storage access was granted.
 			    },
 			    function () {
 			      // Storage access was denied.
 				console.log("Access Denied");
+				text.value += 'Access denied';
 			    }
 			  );
 			}
