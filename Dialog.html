@@ -40,6 +40,20 @@
 					console.log(JSON.stringify(asyncResult));
 				}
 			}
+			
+			function makeRequestWithUserGesture() {
+			  var promise = document.requestStorageAccess();
+			  promise.then(
+			    function () {
+				console.log("Access granted");
+			      // Storage access was granted.
+			    },
+			    function () {
+			      // Storage access was denied.
+				console.log("Access Denied");
+			    }
+			  );
+			}
 		</script>
 		<script>
 		// Perform Step 2 of an initialization that -- in a real developer scenario (non-test-agave), would have
@@ -58,5 +72,8 @@
 		</div>
 		<textarea id="text" cols="20" rows="5"></textarea>
 		<textarea id="messsageFromDialog" cols="20" rows="5"></textarea>
+		<div>
+			<button id="CookieAccess" onclick="makeRequestWithUserGesture()">CookieAccess</button>
+		</div>
 	</body>
 </html>
